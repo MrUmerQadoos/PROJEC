@@ -1,0 +1,356 @@
+[
+  {
+    "fields": [
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error",
+            "message": "Project title is required"
+          }
+        ],
+        "name": "title",
+        "type": "string",
+        "title": "Project Title"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error",
+            "message": "Project description is required"
+          }
+        ],
+        "name": "description",
+        "type": "text",
+        "title": "Project Description"
+      },
+      {
+        "options": {
+          "list": [
+            {
+              "title": "Personal",
+              "value": "personal"
+            },
+            {
+              "title": "Client",
+              "value": "client"
+            },
+            {
+              "title": "Open Source",
+              "value": "opensource"
+            }
+          ]
+        },
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "valid",
+                "constraint": [
+                  "personal",
+                  "client",
+                  "opensource"
+                ]
+              },
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error",
+            "message": "Project type is required"
+          }
+        ],
+        "name": "projectType",
+        "type": "string"
+      },
+      {
+        "options": {
+          "list": [
+            {
+              "title": "Public",
+              "value": "public"
+            },
+            {
+              "title": "Private",
+              "value": "private"
+            }
+          ]
+        },
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "valid",
+                "constraint": [
+                  "public",
+                  "private"
+                ]
+              },
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error",
+            "message": "Repository type is required"
+          }
+        ],
+        "name": "repoType",
+        "type": "string",
+        "title": "Repository Type"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "uri",
+                "constraint": {
+                  "options": {
+                    "scheme": [
+                      "/^http$/",
+                      "/^https$/"
+                    ],
+                    "allowRelative": false,
+                    "relativeOnly": false,
+                    "allowCredentials": false
+                  }
+                }
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "description": "Link to the GitHub repository",
+        "name": "githubUrl",
+        "type": "url",
+        "title": "GitHub URL"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "uri",
+                "constraint": {
+                  "options": {
+                    "scheme": [
+                      "/^http$/",
+                      "/^https$/"
+                    ],
+                    "allowRelative": false,
+                    "relativeOnly": false,
+                    "allowCredentials": false
+                  }
+                }
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "description": "Link to the live project",
+        "name": "url",
+        "type": "url",
+        "title": "Live URL"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "uri",
+                "constraint": {
+                  "options": {
+                    "scheme": [
+                      "/^http$/",
+                      "/^https$/"
+                    ],
+                    "allowRelative": false,
+                    "relativeOnly": false,
+                    "allowCredentials": false
+                  }
+                }
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "description": "Optional: Link to a demo video of the project",
+        "name": "videoUrl",
+        "type": "url",
+        "title": "Demo Video URL"
+      },
+      {
+        "description": "Technologies or frameworks used in the project",
+        "of": [
+          {
+            "type": "string"
+          }
+        ],
+        "name": "tags",
+        "type": "array"
+      },
+      {
+        "options": {
+          "hotspot": true
+        },
+        "description": "Icon representing the project",
+        "name": "icon",
+        "type": "image",
+        "title": "Project Icon"
+      },
+      {
+        "description": "Screenshots of the project",
+        "of": [
+          {
+            "options": {
+              "hotspot": true
+            },
+            "type": "image"
+          }
+        ],
+        "name": "screenshots",
+        "type": "array"
+      }
+    ],
+    "name": "project",
+    "type": "document"
+  },
+  {
+    "fields": [
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error",
+            "message": "Designation is required"
+          }
+        ],
+        "description": "Job title or role.",
+        "name": "designation",
+        "type": "string"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error",
+            "message": "Company is required"
+          }
+        ],
+        "description": "Name of the company.",
+        "name": "company",
+        "type": "string"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error",
+            "message": "Start Date is required"
+          }
+        ],
+        "description": "Start date of the job (e.g., Feb 2023).",
+        "name": "startDate",
+        "type": "string"
+      },
+      {
+        "description": "End date of the job. Leave empty if current job.",
+        "name": "endDate",
+        "type": "string"
+      },
+      {
+        "initialValue": false,
+        "description": "Check if this is the current job.",
+        "name": "isCurrentJob",
+        "type": "boolean",
+        "title": "Current Job"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error",
+            "message": "Location is required"
+          }
+        ],
+        "description": "Location of the job.",
+        "name": "location",
+        "type": "string"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              },
+              {
+                "flag": "max",
+                "constraint": 200
+              }
+            ],
+            "level": "warning",
+            "message": "Keep the description brief and within 200 characters."
+          }
+        ],
+        "description": "A brief overview of the role or key achievement (maximum 200 characters).",
+        "name": "shortDescription",
+        "type": "text"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error",
+            "message": "Detailed description is required"
+          }
+        ],
+        "description": "A more detailed description of the role, achievements, and responsibilities.",
+        "name": "description",
+        "type": "text",
+        "title": "Detailed Description"
+      }
+    ],
+    "name": "experience",
+    "type": "document"
+  }
+]
